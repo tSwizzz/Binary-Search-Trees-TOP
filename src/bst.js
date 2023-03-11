@@ -43,8 +43,10 @@ export class Tree {
     }
 
     //accepts a value to delete
-    delete() {
-        //
+    delete(root, key) {
+        let copy;
+
+
     }
 
     //accepts a value and returns the node with the given value
@@ -61,7 +63,7 @@ export class Tree {
 }
 
 const tree = new Tree([1,2,3,4,5]);
-console.log(tree.insert(tree.root, 15))
+
 
 //bst visual
 const prettyPrint = (node, prefix = '', isLeft = true) => {
