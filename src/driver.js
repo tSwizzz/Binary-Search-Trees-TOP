@@ -10,10 +10,6 @@ export function arrayAndRoot(arr) {
 //lets check it all!
 export function driver() {
     tree.isBalanced(tree.root);
-    tree.insert(tree.root, 21);
-    tree.insert(tree.root, 25);
-    tree.insert(tree.root, 26);
-    tree.insert(tree.root, 78);
-    tree.insert(tree.root, 281);
+    console.log(tree.height(tree.root, 12));
     tree.prettyPrint(tree.root);
 }
