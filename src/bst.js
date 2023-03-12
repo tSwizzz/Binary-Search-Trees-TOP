@@ -100,7 +100,41 @@ export class Tree {
         //do this next :)
     }
 
-    //checks if tree is balanced
+    height(root, key) {
+        let originalRoot = root;
+        let lHeight = 0;
+        let rHeight = 0;
+        let keyHeight;
+
+        if(root.data == key) {
+            while(root.left) {
+                root = root.left;
+                lHeight++;
+            }
+            root = originalRoot;
+            while(root.right) {
+                root = root.right;
+                rHeight++;
+            }
+
+            if(lHeight < rHeight) 
+                return keyHeight = rHeight;
+            else if(lHeight > rHeight)       
+                return keyHeight = lHeight;
+            else
+                //lHeight and rHeight are equal, doesn't matter which one we return
+                return keyHeight = lHeight;
+        }
+        
+        if(root.data < key) {
+            return this.height(root.right, key);
+        }
+        if(root.data > key) {
+            return this.height(root.left, key);
+        }
+    }
+
+    //checks if tree is balanced, also prints depth
     isBalanced(root) {
         let originalRoot = root;
         let lCount = 0;
@@ -119,10 +153,18 @@ export class Tree {
         }
 
         if(lCount == rCount || lCount - rCount == -1 || lCount - rCount == 1) {
-            return console.log("The tree is balanced!");
-        }
+            console.log("The tree is balanced!");
 
-        return console.log("The tree is not balanced!");
+            if(lCount > rCount) {
+                return console.log("The depth of the tree is " + lCount);
+            } else if (rCount > lCount) {
+                return console.log("The depth of the tree is " + rCount);
+            } else {
+                return console.log("The depth of the tree is " + lCount);
+            }
+        } else {
+            return console.log("The tree is not balanced!");
+        }
     }
 
     reBalanceInsert(key) {
@@ -152,7 +194,7 @@ export class Tree {
         }
     }
 }
-let array = [2,4,6,8,10,12,14];
+let array = [2,4,6,8,10,12,13,14,15];
 arrayAndRoot(array);
 driver();
 
