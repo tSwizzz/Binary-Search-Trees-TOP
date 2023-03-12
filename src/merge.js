@@ -1,5 +1,7 @@
+export default mergeSortRecursion;
+
 //sorts array via merge sort
-export function mergeSortRecursion(arr) {
+function mergeSortRecursion(arr) {
     if(arr.length == 1 || arr.length == 0) return arr;
 
     const mid = Math.floor(arr.length / 2);
@@ -37,7 +39,7 @@ function merge(leftArr, rightArr) {
     return result = removeDuplicates(result);
 }
 
-export function removeDuplicates(arr) {
+function removeDuplicates(arr) {
     let newA = [];
 
     //arr is sorted already
