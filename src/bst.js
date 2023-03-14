@@ -96,10 +96,39 @@ export class Tree {
         return this.find(root.left, key);
     }
 
-    levelOrder() {
-        //do this next :)
+    //prints out all node data from tree in level-order fashion
+    levelOrder(root, queue = []) {
+        queue.push(root);
+
+        while(queue[0] != null) {
+            root = queue[0];
+            console.log(root.data);
+
+            if(root.left != null) {
+                queue.push(root.left);
+            } 
+            if(root.right != null) {
+                queue.push(root.right);
+            }
+            queue.shift();
+        }
     }
 
+    //prints out all node data from tree in in-order fashion
+    inOrder() {
+        //add later
+    }
+
+    //prints out all node data from tree in pre-order fashion
+    preOrder() {
+        //add later
+    }
+
+    //prints out all node data from tree in post-order fashion
+    postOrder() {
+        //add later
+    }
+    
     height(root, key) {
         let originalRoot = root;
         let lHeight = 0;
@@ -194,7 +223,7 @@ export class Tree {
         }
     }
 }
-let array = [2,4,6,8,10,12,13,14,15];
+let array = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
 arrayAndRoot(array);
 driver();
 
