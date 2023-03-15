@@ -1,7 +1,7 @@
 import mergeSortRecursion from "./merge.js"
 import { arrayAndRoot, driver} from "./driver.js";
 
-export class Node {
+class Node {
     constructor(data = null, left = null, right = null) {
         this.data = data;
         this.left = left;
@@ -115,25 +115,42 @@ export class Tree {
     }
 
     //prints out all node data from tree in in-order fashion
-    inOrder() {
-        //add later
+    inOrder(root) {
+        if(root == null) {
+            return;
+        }
+
+        this.inOrder(root.left);
+        console.log(root.data);
+        this.inOrder(root.right);
     }
 
     //prints out all node data from tree in pre-order fashion
-    preOrder() {
-        //add later
+    preOrder(root) {
+        if(root == null) {
+            return;
+        }
+
+        console.log(root.data);
+        this.preOrder(root.left);
+        this.preOrder(root.right);
     }
 
     //prints out all node data from tree in post-order fashion
-    postOrder() {
-        //add later
+    postOrder(root) {
+        if(root == null) {
+            return;
+        }
+
+        this.postOrder(root.left);
+        this.postOrder(root.right);
+        console.log(root.data);
     }
-    
+
     height(root, key) {
         let originalRoot = root;
         let lHeight = 0;
         let rHeight = 0;
-        let keyHeight;
 
         if(root.data == key) {
             while(root.left) {
@@ -147,12 +164,12 @@ export class Tree {
             }
 
             if(lHeight < rHeight) 
-                return keyHeight = rHeight;
+                return rHeight;
             else if(lHeight > rHeight)       
-                return keyHeight = lHeight;
+                return lHeight;
             else
-                //lHeight and rHeight are equal, doesn't matter which one we return
-                return keyHeight = lHeight;
+                //lHeight and rHeight are equal in this case so it doesn't matter which one we return
+                return lHeight;
         }
         
         if(root.data < key) {
@@ -223,7 +240,7 @@ export class Tree {
         }
     }
 }
-let array = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+let array = [2,1,4,3,6,5,8,7,9];
 arrayAndRoot(array);
 driver();
 
